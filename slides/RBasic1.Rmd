@@ -137,8 +137,8 @@ head(Boston)
 
 Column Name | 中文 | Column Name | 中文
 - | - | - | -
-crim | 犯罪率 | rm | 該鎮平均每戶的房間數目
-dis | 離公司距離 | indus | 商業區比例
+crim | 該鎮犯罪率 | rm | 該鎮平均每戶的房間數目
+dis | 該鎮離辦公區的距離 | indus | 該鎮商業比率
 lstat | lower status of the population (percent).低收入戶比例 | medv | 自有住宅房價中位數
 
 
@@ -147,7 +147,8 @@ lstat | lower status of the population (percent).低收入戶比例 | medv | 自
 <p style="font-size:36px">你也可以使用 </p> 
 <p style="font-size:36px">
 head(),  
-tail(),  
+tail(), 
+view()
 summary(),  
 str()</p>
 
@@ -202,6 +203,17 @@ lstat | 該鎮低收入戶比例 | medv | 該鎮住宅房價中位數
 
 kable(summary(Boston[,c("lstat", "medv")]))
 ```
+
+## 如何看某個資料欄位
+
+<p style="font-size:36px">
+Boston$medv  
+Boston的medv欄位
+</p>
+```{r}
+summary(Boston$medv)
+```
+
 
 ---
 
@@ -259,23 +271,13 @@ abline(LM,col=2)
 #畫出圖
 ```
 
-<div class="variable">
-畫圖 
-plot(x,y)  
-線性模型(二元一次方程式,線性迴歸....)
-lm(y~x)  
-在plot上加直線  
-abline(x,col=)
-</div>
+
 
 
 
 ## 小練習 房間數與房價的關係
 
-<br>
-<br>
-<br>
-<br>
+
 參考程式碼
 ```{r, eval=FALSE}
 plot(Boston$rm,Boston$medv)
@@ -285,7 +287,14 @@ LM=lm(Boston$medv~Boston$rm)
 abline(LM,col=2)
 #畫出圖
 ```
-
+<div class="variable">
+畫圖 
+plot(x,y)  
+線性模型(二元一次方程式,線性迴歸....)
+lm(y~x)  
+在plot上加直線  
+abline(x,col=)
+</div>
 
 ---
 
@@ -413,7 +422,7 @@ colMeans()
 rbind(colMeans(MEDVhight),colMeans(MEDVOther))
 ```
 
-高房價的鎮 犯罪率較低 工業區較少 住宅區比例高
+高房價的鎮 犯罪率較低 商業區較少 住宅區比例高
 <br>
 <br>
 <br>
@@ -427,19 +436,31 @@ rbind(row1,row2)
 
 <p style="font-size:36px"> 我們現在知道～～<p/>
 
-1. 平均數 rbind->高房價的鎮 犯罪率較低 工業區較少 住宅區比例高  
+1. 平均數 rbind->高房價的鎮 犯罪率較低 商業區較少 住宅區比例高  
 2. 相關性 -> 房價跟房間數正相關,低收入戶多寡負相關   
+
+---
+
+<p style="font-size:36px">我們想更了解 低收入戶多寡跟房價的關係</p>
+```{r}
+View(Boston)
+
+```
+
+
+
+
 
 ## 高房價的鎮 該鎮低收入戶多寡
 
-我們可以嘗試將低收入戶分類
+嘗試將低收入戶分類
 
 <div class="hidecode" onclick="doclick(this);">[Show]</div>
 ```{r}
 Boston2=Boston
 Boston2$Income=cut(Boston2$lstat,breaks=3)
 #將低收入戶比例分成三類別
-Boston2$Income
+View(Boston2)
 ```
 
 ---
@@ -447,9 +468,9 @@ Boston2$Income
 <p style="font-size:36px">
 也可以用文字標記</p> 
 
-H: 該鎮低收入戶比例 < 13.8%  
-M: 該鎮低收入戶比例 13.8%~25.9%  
-L: 該鎮低收入戶比例 >25.9%
+H: 該鎮低收入戶比例 1.69% ~ 13.8%  
+M: 該鎮低收入戶比例 13.8% ~ 25.9%  
+L: 該鎮低收入戶比例 25.9% ~ 38%
 
 <div class="hidecode" onclick="doclick(this);">[Show]</div>
 ```{r}
@@ -476,6 +497,14 @@ table(Boston2$Income)
 各欄位加總
 table()
 </div>
+
+---
+
+<p style="font-size:36px"> 我們現在知道～～<p/>
+
+1. 平均數 rbind->高房價的鎮 犯罪率較低 商業區較少 住宅區比例高  
+2. 相關性 -> 房價跟房間數正相關,低收入戶多寡負相關 
+
 
 
 ---
@@ -574,19 +603,17 @@ R 的基本資料結構與統計測量尺度對應關係
 | 區間資料 |   量性   |  Vector  |
 | 比例資料 |   量性   |  Vector  |
 
-## Vector in R
-
-<div align='center'>
-  <img src=img/Vector.png width=70%/>
-</div>
 
 
 ## Vector in R
 
-<div align='center'>
-  <img src=img/Vector.png width=70%/>
-</div>
-<br/>
+<p style="font-size:36px"> 
+請你先試打  
+x=1  
+再試打  
+x=1,2</p>
+
+---
 
 - 可以使用 `c` 這個內建函數建立向量
 
@@ -603,10 +630,11 @@ Month1=c(1,2,3,4,5,6,7,8,9,10,11,12)
 Month2=1:12 # 建立連續向量的簡易寫法
 ```
 
+---
 
 <p style="font-size:36px"> 練習一下 </p>
 
-- 用剛剛學會的 `c` 來建立兩個向量, `taipei_temp` 跟 `hengchun_temp` 紀錄兩地氣溫。
+- 用剛剛學會的 `c` 來建立兩個向量, `taipei_tem` 跟 `hengchun_tem` 紀錄兩地氣溫。
 
 台北恆春每月平均溫度
 
@@ -617,11 +645,9 @@ Month2=1:12 # 建立連續向量的簡易寫法
 
 ## 練習一下
 
-```{r Temperature, cache=TRUE}
-taipei_temp = c(16.1, 16.5, 18.5, 21.9,	25.2, 27.7,	29.6,	29.2, 27.4, 
-            24.5, 21.5,	17.9)
-hengchun_temp = c(20.7, 21.4, 23.2, 25.2,	27.0,	27.9,	28.4,	28.1,	27.4,	
-              26.3,	24.3,	21.7)
+```{r Temp , cache=TRUE}
+TaipeiTem=c(16.1,16.5,18.5 ,  21.9 ,	25.2 ,	27.7 ,	29.6 ,	29.2,27.4,24.5 ,	21.5 ,	17.9)
+HengchunTem=c(20.7 , 21.4 , 23.2 ,  25.2 ,	27.0 ,	27.9 ,	28.4 ,	28.1 ,	27.4 ,	26.3 ,	24.3 ,	21.7)
 ```
 
 ---
@@ -629,10 +655,10 @@ hengchun_temp = c(20.7, 21.4, 23.2, 25.2,	27.0,	27.9,	28.4,	28.1,	27.4,
 <p style="font-size:36px">加上月份名</p>
 
 ```{r, cache=TRUE, results='hold'}
-names(taipei_temp) = Month1
-names(hengchun_temp) = Month2
-taipei_temp
-hengchun_temp
+names(taipei_tem) = Month1
+names(hengchun_tem) = Month2
+taipei_tem
+hengchun_tem
 ```
 
 
@@ -666,13 +692,6 @@ c(1, 2, 3) + 1
 ![vectorize-plus-before](img/vectorize-plus-before.png)
 ![vectorize-plus-after](img/vectorize-plus-after.png)
 
-## 猜猜看
-
-```{r, cache=TRUE, results='hide'}
-guess <- c(1:10) + c(1:2)
-```
-
-- `guess` 會是多少呢?
 
 ## 猜猜看
 
@@ -699,38 +718,11 @@ Character > Numeric > Logical
 
 ```{r, cache=TRUE}
 x <- c(1, 2, "3")
-class(x)
-x
-```
-
-## 向量的同質性
-
-Character > Numeric  > Logical
-
-```{r, cache=TRUE}
-x <- c(1, 2, "3")
-class(x)
 x
 ```
 
 - 向量中的所有元素都必須是同一種型別。
 
-
-## 練習一下 向量
-
-台北恆春每月平均溫度
-
-月份 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 
-- |- | - | - | - | - | - | - | - | - | - | - | - 
-台北 | 16.1 | 16.5 |  18.5 |  21.9 |  25.2 |  27.7 |  29.6 |  29.2 |	27.4 | 24.5 |	21.5 |	17.9
-恆春 | 20.7 | 21.4 | 23.2 |	25.2 |	27.0 |	27.9 |	28.4 |	28.1 |	27.4 |	26.3 |	24.3 |	21.7
-
----
-
-```{r Temp}
-TaipeiTem=c(16.1,16.5,18.5 ,	21.9 ,	25.2 ,	27.7 ,	29.6 ,	29.2,27.4,24.5 ,	21.5 ,	17.9)
-HengchunTem=c(20.7 , 21.4 , 23.2 ,  25.2 ,	27.0 ,	27.9 ,	28.4 ,	28.1 ,	27.4 ,	26.3 ,	24.3 ,	21.7)
-```
 
 
 ---
@@ -762,12 +754,12 @@ as.integer(x)
 ```{r factor NA Message}
 levels(x)
 x <- factor(c("F","M","F","F"), levels=c("F"))
-levels(x)
+x
 ```
 
----
 
-### 如何處理順序資料?
+
+## 如何處理順序資料?
 
 ```{r factor-levels ordinal}
 #農業社會 男尊女卑
@@ -794,6 +786,7 @@ rank[1]<rank[2]
 
 
 ---
+
 <p style="font-size:36px">
 Recap</p>
 
@@ -845,7 +838,7 @@ substring(name1, 1, 1)
 
 輸入蔡依林的基本資料:  
 age:34  
-height:158
+height:158  
 weight:40
 
 ```{r}
@@ -919,17 +912,39 @@ View(Boston)
 
 ![Matrix1](img/R_Basic_Matrix.png)
 
+
+
 ---
 
 <p style="font-size:36px"> DataFrame Row的概念</p>
 
 ![MatrixRow](img/R_Basic_Matrix_row.png)
 
+```{r}
+View(Boston)
+Boston[1,]
+```
+
+
+
+
 ---
 
 <p style="font-size:36px"> DataFrame Column的概念
 
 ![MatrixRow](img/R_Basic_Matrix_col.png)
+
+
+```{r}
+View(Boston)
+Boston[,1]
+```
+
+---
+
+<p style="font-size:36px"> 
+寫函數 (x,)  
+選取 [row,column]</p>
 
 ---
 
@@ -953,7 +968,7 @@ Boston[["Income"]]<-NULL
 
 ```{r,warning=FALSE}
 Serial=c(1,2,3)
-RBasicTeacher=c("Dboy", "Ning", "Noha")
+RBasicTeacher=c("Dboy", "Ning", "Noah")
 RBasicRbind=rbind(Serial,RBasicTeacher)
 ```
 
@@ -962,7 +977,7 @@ RBasicRbind=rbind(Serial,RBasicTeacher)
 <p style="font-size:36px">cbind</p>
 ```{r}
 Serial=c(1,2,3)
-RBasicTeacher=c("Dboy", "Ning", "Noha")
+RBasicTeacher=c("Dboy", "Ning", "Noah")
 RBasicCbind=cbind(Serial,RBasicTeacher)
 RBasic=cbind(c(1,2,3),c("Dboy", "Ning", "Noha"))
 ```
@@ -977,11 +992,10 @@ RBasic=cbind(c(1,2,3),c("Dboy", "Ning", "Noha"))
 <p style="font-size:36px"> Factor</p>
 
 ```{r}
-factor_example=factor(c("三年甲班", "三年乙班", "三年甲班"))
+factor_example=factor(c("A", "B", "A"))
 summary(factor_example)
 ```
-三年乙班 三年甲班 
-1        2 
+
 
 ---
 
@@ -991,8 +1005,6 @@ summary(factor_example)
 character_example=c("a","b","c")
 summary(character_example)
 ```
-Length     Class      Mode 
-3       character   character 
 
 ---
 
@@ -1002,11 +1014,14 @@ Length     Class      Mode
 list_example <- list(1L, 2.0, "3")
 summary(list_example)
 ```
-Length Class  Mode     
-[1,] 1      -none- numeric  
-[2,] 1      -none- numeric  
-[3,] 1      -none- character
 
+---
+
+<p style="font-size:36px"> DataFrame </p>
+```{r}
+
+summary(Boston2)
+```
 
 
 # 資料的選取
