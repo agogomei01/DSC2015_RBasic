@@ -509,7 +509,10 @@ table()
 
 ---
 
-<p style="font-size:72px">Let's Play Swirl</p>
+<p style="font-size:72px">Let's Play Swirl  
+  
+**Section 3**
+</p>
 
 
 
@@ -1175,3 +1178,13 @@ as.numeric(x)
 - Dboy
 
 ![DBoy](img/DBoy.jpg)
+
+
+
+
+---
+
+<p style="font-size:72px">Let's Play Swirl  
+  
+**Section 4**
+</p>
