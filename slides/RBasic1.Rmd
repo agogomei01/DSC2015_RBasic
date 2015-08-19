@@ -81,6 +81,8 @@ span {
 
 ---
 
+
+
 讓我們用R先來玩個資料吧～～
 
 ![USALandCollect](img/Boston.png)
@@ -93,6 +95,12 @@ span {
 
 ---
 
+
+
+如果你還沒下載R Script  
+請將[RScript](https://github.com/agogomei01/DSC2015_RBasic/blob/master/slides/RBasic1.R) 複製
+
+---
 
 ```{r,eval=TRUE}
 library(MASS)
@@ -113,7 +121,6 @@ Boston=subset(Boston,,-c(zn,chas,black,rad,ptratio,age,nox,tax))
 
 </div>
 
----
 
 ## 如何看資料
 
@@ -126,8 +133,6 @@ head(Boston)
 
 
 
----
-
 ## Boston Dataset有哪些Variables
 
 Column Name | 中文 | Column Name | 中文
@@ -139,16 +144,12 @@ lstat | lower status of the population (percent).低收入戶比例 | medv | 自
 
 ---
 
-<p style="font-size:36px">你也可以使用  
-
+<p style="font-size:36px">你也可以使用 </p> 
+<p style="font-size:36px">
 head(),  
 tail(),  
 summary(),  
 str()</p>
-
-
-
----
 
 
 
@@ -341,7 +342,6 @@ breaks:分成幾類
 
 <p style="font-size:36px"> 房價分布圖</p>
 
-- 使用 `hist` 做出房價的柱狀圖。
 - 使用 `abline` 標示出剛剛計算的前 5% 高的房價位置。
 
 ```{r}
@@ -794,8 +794,8 @@ rank[1]<rank[2]
 
 
 ---
-
-Recape
+<p style="font-size:36px">
+Recap</p>
 
 同質性資料
 <br>
@@ -821,7 +821,7 @@ Recape
 
 <p style="font-size:36px">常用的Character處理函數</p>
 
-字串的剪接：`paste
+字串的剪接：`paste`
 ```{r}
 x <- "abc";y <- "dbbbe"
 paste(x, y, sep=",")
@@ -831,6 +831,8 @@ paste(x, y, sep=",")
 ```{r}
 strsplit(x, "b")
 ```
+
+---
 
 截取子字串：`substring`
 ```{r}
@@ -915,19 +917,19 @@ View(Boston)
 
 <p style="font-size:36px">DataFrame呈現</p>
 
-![Matrix1](~/Dropbox/Rprojects/RBasic1/img/R_Basic_Matrix.png)
+![Matrix1](img/R_Basic_Matrix.png)
 
 ---
 
 <p style="font-size:36px"> DataFrame Row的概念</p>
 
-![MatrixRow](~/Dropbox/Rprojects/RBasic1/img/R_Basic_Matrix_row.png)
+![MatrixRow](img/R_Basic_Matrix_row.png)
 
 ---
 
 <p style="font-size:36px"> DataFrame Column的概念
 
-![MatrixRow](~/Dropbox/Rprojects/RBasic1/img/R_Basic_Matrix_col.png)
+![MatrixRow](img/R_Basic_Matrix_col.png)
 
 ---
 
@@ -1057,19 +1059,18 @@ HengchunHotMonths = HengchunTem[SelectMonth==TRUE]
 ---
 
 <p style="font-size:36px"> 找出夏天(七八九月)平均溫度</p>
-    ```{r}
+```{r}
  TaipeiTem[7:9]
 mean(TaipeiTem[7:9])
 HengchunTem[7:9]
 mean(HengchunTem[7:9])
-    ```
+```
 
 ---
 
 <p style="font-size:36px"> 找出冬天(十二,一,二月)平均溫度</p>
 ```{r,error=FALSE}
 # TaipeiTem[1,2,12]
-
 mean(TaipeiTem[c(1,2,12)])
 mean(HengchunTem[c(1,2,12)])
 ```
@@ -1151,10 +1152,11 @@ as.numeric(x)
 
 - 智程
 
-![Chi-Cheng](https://avatars1.githubusercontent.com/u/3391420?v=3&s=400)
+![Chi-Cheng](img/LiangCC.jpg)
 
 
 ---
 
 - Dboy
 
+![DBoy](img/DBoy.jpg)
