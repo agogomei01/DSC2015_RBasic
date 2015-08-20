@@ -65,7 +65,6 @@ span {
 </style>
 
 
-
 ## R: A Brief Introduction
 
 - 1976 貝爾實驗室 John Chambers,Rick Becker,Allan Wilks 研發 S 語言
@@ -99,6 +98,30 @@ span {
 
 如果你還沒下載R Script  
 請將[RScript](https://github.com/agogomei01/DSC2015_RBasic/blob/master/slides/RBasic1.R) 複製
+
+
+---
+
+<p style="font-size:72px">
+對你有幫助的快捷鍵</p>
+<p style="font-size:36px">
+關鍵字尋找: Ctrl + F  
+(在Script)執行檔案: Ctrl + Enter  
+(在Consol)按 向上  
+回上一動作  Ctrl+z
+</p>
+
+---
+
+<p style="font-size:36px">
+尋找助教的時機  
+1.操作上的問題  
+2.不知道老師講到哪裡時  
+
+希望你下課在找助教的問題  
+1.統計 數學等觀念問題  
+2.比較複雜的問題</p>
+
 
 ---
 
@@ -147,8 +170,8 @@ lstat | lower status of the population (percent).低收入戶比例 | medv | 自
 <p style="font-size:36px">你也可以使用 </p> 
 <p style="font-size:36px">
 head(),  
-tail(), 
-view()
+tail(),   
+view(),   
 summary(),  
 str()</p>
 
@@ -484,9 +507,10 @@ Boston2$Income= cut(Boston2$lstat,breaks=3,labels=c("H","M","L"))
 
 <p style="font-size:36px">我可以計算有多少"H"嗎?</p>
 
-H: 該鎮低收入戶比例 < 13.8%  
-M: 該鎮低收入戶比例 13.8%~25.9%  
-L: 該鎮低收入戶比例 >25.9%  
+H: 該鎮低收入戶比例 1.69% ~ 13.8%  
+M: 該鎮低收入戶比例 13.8% ~ 25.9%  
+L: 該鎮低收入戶比例 25.9% ~ 38%
+
 <div class="hidecode" onclick="doclick(this);">[Show]</div>
 ```{r}
 table(Boston2$Income)
@@ -509,9 +533,10 @@ table()
 
 ---
 
-<p style="font-size:72px">Let's Play Swirl  
+<p style="font-size:72px">
+Let's Play Swirl  
   
-**Section 3**
+Section 3
 </p>
 
 
@@ -658,10 +683,11 @@ HengchunTem=c(20.7 , 21.4 , 23.2 ,  25.2 ,	27.0 ,	27.9 ,	28.4 ,	28.1 ,	27.4 ,	26
 <p style="font-size:36px">加上月份名</p>
 
 ```{r, cache=TRUE, results='hold'}
-names(taipei_tem) = Month1
-names(hengchun_tem) = Month2
-taipei_tem
-hengchun_tem
+names(TaipeiTem) = Month1
+
+names(HengchunTem) = Month2
+TaipeiTem
+HengchunTem
 ```
 
 
@@ -764,10 +790,18 @@ x
 
 ## 如何處理順序資料?
 
-```{r factor-levels ordinal}
+<p style="font-size:36px">農業社會 男尊女卑</p>
+
+```{r factor-levels ordinal Argri}
 #農業社會 男尊女卑
 Argri <- factor(c("F","M","F","F"),order=TRUE,levels=c("F","M"))
+```
 
+---
+
+<p style="font-size:36px">阿美族 女尊男卑</p>
+
+```{r factor-levels ordinal Amis}
 #阿美族 女尊男卑
 Amis <- factor(c("F","M","F","F"),order=FALSE,levels=c("F","M"))
 
@@ -1014,7 +1048,7 @@ summary(character_example)
 <p style="font-size:36px"> List </p>
 
 ```{r}
-list_example <- list(1L, 2.0, "3")
+list_example <- list(1, 2.0, "3")
 summary(list_example)
 ```
 
@@ -1063,7 +1097,7 @@ HengchunTem
 
 <p style="font-size:36px"> 分別選取出兩地溫度>20度的月份</p>
 
-- "> <"
+- > <
 ```{r}
 TaipeiTem>20
 TaipeiHotMonths = TaipeiTem[TaipeiTem>20]

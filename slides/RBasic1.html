@@ -206,6 +206,30 @@ span {
 
 </article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
 
+<p style="font-size:72px">
+
+對你有幫助的快捷鍵
+
+</p>
+
+<p style="font-size:36px">
+
+關鍵字尋找: Ctrl + F<br/>(在Script)執行檔案: Ctrl + Enter<br/>(在Consol)按 向上<br/>回上一動作 Ctrl+z
+
+</p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<p style="font-size:36px">
+
+<p>尋找助教的時機<br/>1.操作上的問題<br/>2.不知道老師講到哪裡時</p>
+
+希望你下課在找助教的問題<br/>1.統計 數學等觀念問題<br/>2.比較複雜的問題
+
+</p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
 <pre class = 'prettyprint lang-r'>library(MASS)
 #介紹引入套件
 data(Boston)
@@ -286,7 +310,7 @@ Boston=subset(Boston,,-c(zn,chas,black,rad,ptratio,age,nox,tax))
 
 <p style="font-size:36px">
 
-head(),<br/>tail(), view() summary(),<br/>str()
+head(),<br/>tail(),<br/>view(),<br/>summary(),<br/>str()
 
 </p>
 
@@ -777,7 +801,7 @@ View(Boston2)</pre>
 
 </p>
 
-H: 該鎮低收入戶比例 &lt; 13.8%<br/>M: 該鎮低收入戶比例 13.8%~25.9%<br/>L: 該鎮低收入戶比例 &gt;25.9%<br/>
+<p>H: 該鎮低收入戶比例 1.69% ~ 13.8%<br/>M: 該鎮低收入戶比例 13.8% ~ 25.9%<br/>L: 該鎮低收入戶比例 25.9% ~ 38%</p>
 
 <div class="hidecode" onclick="doclick(this);">
 [Show]</div>
@@ -812,7 +836,7 @@ H: 該鎮低收入戶比例 &lt; 13.8%<br/>M: 該鎮低收入戶比例 13.8%~25.
 
 <p>Let&#39;s Play Swirl</p>
 
-<strong>Section 3</strong>
+Section 3
 
 </p>
 
@@ -1091,10 +1115,11 @@ HengchunTem=c(20.7 , 21.4 , 23.2 ,  25.2 ,  27.0 ,  27.9 ,  28.4 ,  28.1 ,  27.4
 
 </p>
 
-<pre class = 'prettyprint lang-r'>names(taipei_tem) = Month1
-names(hengchun_tem) = Month2
-taipei_tem
-hengchun_tem</pre>
+<pre class = 'prettyprint lang-r'>names(TaipeiTem) = Month1
+
+names(HengchunTem) = Month2
+TaipeiTem
+HengchunTem</pre>
 
 <pre >##    1    2    3    4    5    6    7    8    9   10   11   12 
 ## 16.1 16.5 18.5 21.9 25.2 27.7 29.6 29.2 27.4 24.5 21.5 17.9 
@@ -1225,10 +1250,24 @@ x</pre>
 
 </article></slide><slide class=''><hgroup><h2>如何處理順序資料?</h2></hgroup><article >
 
-<pre class = 'prettyprint lang-r'>#農業社會 男尊女卑
-Argri &lt;- factor(c(&quot;F&quot;,&quot;M&quot;,&quot;F&quot;,&quot;F&quot;),order=TRUE,levels=c(&quot;F&quot;,&quot;M&quot;))
+<p style="font-size:36px">
 
-#阿美族 女尊男卑
+農業社會 男尊女卑
+
+</p>
+
+<pre class = 'prettyprint lang-r'>#農業社會 男尊女卑
+Argri &lt;- factor(c(&quot;F&quot;,&quot;M&quot;,&quot;F&quot;,&quot;F&quot;),order=TRUE,levels=c(&quot;F&quot;,&quot;M&quot;))</pre>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<p style="font-size:36px">
+
+阿美族 女尊男卑
+
+</p>
+
+<pre class = 'prettyprint lang-r'>#阿美族 女尊男卑
 Amis &lt;- factor(c(&quot;F&quot;,&quot;M&quot;,&quot;F&quot;,&quot;F&quot;),order=FALSE,levels=c(&quot;F&quot;,&quot;M&quot;))
 
 #應該要用
@@ -1621,7 +1660,7 @@ List
 
 </p>
 
-<pre class = 'prettyprint lang-r'>list_example &lt;- list(1L, 2.0, &quot;3&quot;)
+<pre class = 'prettyprint lang-r'>list_example &lt;- list(1, 2.0, &quot;3&quot;)
 summary(list_example)</pre>
 
 <pre >##      Length Class  Mode     
@@ -1694,11 +1733,13 @@ x &gt; 3</pre>
 
 <pre class = 'prettyprint lang-r'>TaipeiTem</pre>
 
-<pre >##  [1] 16.1 16.5 18.5 21.9 25.2 27.7 29.6 29.2 27.4 24.5 21.5 17.9</pre>
+<pre >##    1    2    3    4    5    6    7    8    9   10   11   12 
+## 16.1 16.5 18.5 21.9 25.2 27.7 29.6 29.2 27.4 24.5 21.5 17.9</pre>
 
 <pre class = 'prettyprint lang-r'>HengchunTem</pre>
 
-<pre >##  [1] 20.7 21.4 23.2 25.2 27.0 27.9 28.4 28.1 27.4 26.3 24.3 21.7</pre>
+<pre >##    1    2    3    4    5    6    7    8    9   10   11   12 
+## 20.7 21.4 23.2 25.2 27.0 27.9 28.4 28.1 27.4 26.3 24.3 21.7</pre>
 
 </article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
 
@@ -1709,13 +1750,15 @@ x &gt; 3</pre>
 </p>
 
 <ul>
-<li>&quot;&gt; &lt;&quot;</li>
+<li><blockquote>
+<p>&lt;</p>
+</blockquote></li>
 </ul>
 
 <pre class = 'prettyprint lang-r'>TaipeiTem&gt;20</pre>
 
-<pre >##  [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-## [12] FALSE</pre>
+<pre >##     1     2     3     4     5     6     7     8     9    10    11    12 
+## FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE</pre>
 
 <pre class = 'prettyprint lang-r'>TaipeiHotMonths = TaipeiTem[TaipeiTem&gt;20]</pre>
 
@@ -1736,7 +1779,8 @@ HengchunHotMonths = HengchunTem[SelectMonth==TRUE]</pre>
 
 <pre class = 'prettyprint lang-r'> TaipeiTem[7:9]</pre>
 
-<pre >## [1] 29.6 29.2 27.4</pre>
+<pre >##    7    8    9 
+## 29.6 29.2 27.4</pre>
 
 <pre class = 'prettyprint lang-r'>mean(TaipeiTem[7:9])</pre>
 
@@ -1744,7 +1788,8 @@ HengchunHotMonths = HengchunTem[SelectMonth==TRUE]</pre>
 
 <pre class = 'prettyprint lang-r'>HengchunTem[7:9]</pre>
 
-<pre >## [1] 28.4 28.1 27.4</pre>
+<pre >##    7    8    9 
+## 28.4 28.1 27.4</pre>
 
 <pre class = 'prettyprint lang-r'>mean(HengchunTem[7:9])</pre>
 
@@ -1778,15 +1823,14 @@ mean(TaipeiTem[c(1,2,12)])</pre>
 <pre class = 'prettyprint lang-r'>TemTable=rbind(TaipeiTem,HengchunTem)
 TemTable</pre>
 
-<pre >##             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
-## TaipeiTem   16.1 16.5 18.5 21.9 25.2 27.7 29.6 29.2 27.4  24.5  21.5  17.9
-## HengchunTem 20.7 21.4 23.2 25.2 27.0 27.9 28.4 28.1 27.4  26.3  24.3  21.7</pre>
+<pre >##                1    2    3    4    5    6    7    8    9   10   11   12
+## TaipeiTem   16.1 16.5 18.5 21.9 25.2 27.7 29.6 29.2 27.4 24.5 21.5 17.9
+## HengchunTem 20.7 21.4 23.2 25.2 27.0 27.9 28.4 28.1 27.4 26.3 24.3 21.7</pre>
 
 <pre class = 'prettyprint lang-r'>#選取台北二月的溫度
 TemTable[1,2]</pre>
 
-<pre >## TaipeiTem 
-##      16.5</pre>
+<pre >## [1] 16.5</pre>
 
 <pre class = 'prettyprint lang-r'>#選取二月的溫度
 TemTable[,2]</pre>
@@ -1796,7 +1840,8 @@ TemTable[,2]</pre>
 
 <pre class = 'prettyprint lang-r'>TemTable[1,]</pre>
 
-<pre >##  [1] 16.1 16.5 18.5 21.9 25.2 27.7 29.6 29.2 27.4 24.5 21.5 17.9</pre>
+<pre >##    1    2    3    4    5    6    7    8    9   10   11   12 
+## 16.1 16.5 18.5 21.9 25.2 27.7 29.6 29.2 27.4 24.5 21.5 17.9</pre>
 
 </article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
 

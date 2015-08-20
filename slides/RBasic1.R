@@ -11,6 +11,7 @@ kable(summary(Boston[c("crim", "indus")]))
 kable(summary(Boston[,c("rm", "dis")]))
 
 kable(summary(Boston[,c("lstat", "medv")]))
+summary(Boston$medv)
 #解釋1非常正相關 -1是非常負相關
 cor(Boston$medv,Boston)
 barplot(cor(Boston$medv,Boston))
@@ -38,40 +39,34 @@ MEDVOther = subset(Boston,Boston$medv< 43.4)
 colMeans(MEDVhight)
 colMeans(MEDVOther)
 rbind(colMeans(MEDVhight),colMeans(MEDVOther))
+View(Boston)
+
 Boston2=Boston
 Boston2$Income=cut(Boston2$lstat,breaks=3)
 #將低收入戶比例分成三類別
-Boston2$Income
+View(Boston2)
 Boston2$Income= cut(Boston2$lstat,breaks=3,labels=c("H","M","L"))
 table(Boston2$Income)
 str(Boston2)
 x = c(1, 2)
 Month1=c(1,2,3,4,5,6,7,8,9,10,11,12)
 Month2=1:12 # 建立連續向量的簡易寫法
-taipei_temp = c(16.1, 16.5, 18.5, 21.9,	25.2, 27.7,	29.6,	29.2, 27.4, 
-            24.5, 21.5,	17.9)
-hengchun_temp = c(20.7, 21.4, 23.2, 25.2,	27.0,	27.9,	28.4,	28.1,	27.4,	
-              26.3,	24.3,	21.7)
-names(taipei_temp) = Month1
-names(hengchun_temp) = Month2
-taipei_temp
-hengchun_temp
+TaipeiTem=c(16.1,16.5,18.5 ,  21.9 ,	25.2 ,	27.7 ,	29.6 ,	29.2,27.4,24.5 ,	21.5 ,	17.9)
+HengchunTem=c(20.7 , 21.4 , 23.2 ,  25.2 ,	27.0 ,	27.9 ,	28.4 ,	28.1 ,	27.4 ,	26.3 ,	24.3 ,	21.7)
+names(TaipeiTem) = Month1
+
+names(HengchunTem) = Month2
+TaipeiTem
+HengchunTem
 c(1, 2, 3) + c(3, 2, 1)
 c(1, 2, 3) + 1
 c(1, 2, 3) + 1
 c(1, 2, 3) + 1
-guess <- c(1:10) + c(1:2)
 guess <- c(1:10) + c(2, 4)
 guess
 1:3 * 2
 x <- c(1, 2, "3")
-class(x)
 x
-x <- c(1, 2, "3")
-class(x)
-x
-TaipeiTem=c(16.1,16.5,18.5 ,	21.9 ,	25.2 ,	27.7 ,	29.6 ,	29.2,27.4,24.5 ,	21.5 ,	17.9)
-HengchunTem=c(20.7 , 21.4 , 23.2 ,  25.2 ,	27.0 ,	27.9 ,	28.4 ,	28.1 ,	27.4 ,	26.3 ,	24.3 ,	21.7)
 x <- c("F","M","F","F")
 x
 x <- factor(c("F","M","F","F"), levels=c("F","M"))
@@ -79,10 +74,9 @@ x
 as.integer(x)
 levels(x)
 x <- factor(c("F","M","F","F"), levels=c("F"))
-levels(x)
+x
 #農業社會 男尊女卑
 Argri <- factor(c("F","M","F","F"),order=TRUE,levels=c("F","M"))
-
 #阿美族 女尊男卑
 Amis <- factor(c("F","M","F","F"),order=FALSE,levels=c("F","M"))
 
@@ -108,19 +102,25 @@ Jolin
 #答案
 Jolin = list(age=34,height=158,weight=40,Location="Taipei",Gender="F")
 Jolin
+View(Boston)
+Boston[1,]
+View(Boston)
+Boston[,1]
 Serial=c(1,2,3)
-RBasicTeacher=c("Dboy", "Ning", "Noha")
+RBasicTeacher=c("Dboy", "Ning", "Noah")
 RBasicRbind=rbind(Serial,RBasicTeacher)
 Serial=c(1,2,3)
-RBasicTeacher=c("Dboy", "Ning", "Noha")
+RBasicTeacher=c("Dboy", "Ning", "Noah")
 RBasicCbind=cbind(Serial,RBasicTeacher)
 RBasic=cbind(c(1,2,3),c("Dboy", "Ning", "Noha"))
-factor_example=factor(c("三年甲班", "三年乙班", "三年甲班"))
+factor_example=factor(c("A", "B", "A"))
 summary(factor_example)
 character_example=c("a","b","c")
 summary(character_example)
-list_example <- list(1L, 2.0, "3")
+list_example <- list(1, 2.0, "3")
 summary(list_example)
+
+summary(Boston2)
 x <- 1:5
 x[2:3]
 x <- 1:5
